@@ -18,12 +18,12 @@
 
   <div>
     <%= form.label :paid_at, style: "display: block" %>
-    <%= form.datetime_field :paid_at %>
+    <%= form.date_field :paid_at %>
   </div>
 
   <div>
-    <%= form.label :kind, style: "display: block" %>
-    <%= form.number_field :kind %>
+    <%= form.label :kind, style: "dvaluesay:block" %>
+    <%= form.collection_select :kind, Payment.kinds, :first, :first %>
   </div>
 
   <div>
