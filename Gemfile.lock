@@ -155,6 +155,10 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.8-aarch64-linux)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.8-arm64-darwin)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     tzinfo (2.0.4)
@@ -175,6 +179,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   sprockets-rails
+  tailwindcss-rails (~> 2.0)
   tzinfo-data
 
 RUBY VERSION
