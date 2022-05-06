@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Payments</h1>
+<div class="flex justify-between items-center">
+  <h1 class="mb-4 text-3xl font-black">Payments</h1>
+  <%= link_to "New payment", new_payment_path, class: "bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+</div>
 
 <div id="payments">
   <% @payments.each do |payment| %>
     <%= render payment %>
-    <p>
-      <%= link_to "Show this payment", payment %>
+    <p class="mt-5 mb-5">
+      <%= link_to "Show this payment", payment, class: "bg-gray-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-gray-300 hover:text-black" %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New payment", new_payment_path %>
