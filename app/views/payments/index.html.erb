@@ -5,10 +5,14 @@
 </div>
 
 <div id="payments">
-  <% @payments.each do |payment| %>
-    <%= render payment %>
-    <p class="mt-5 mb-5">
-      <%= link_to "Show this payment", payment, class: "bg-gray-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-gray-300 hover:text-black" %>
-    </p>
-  <% end %>
+  <div class="flex flex-row">
+    <p class="flex-1">Kind</p>
+    <p class="flex-1">Paid at</p>
+    <p class="flex-1">Amount</p>
+    <p class="flex-1">Name</p>
+    <p class="flex-1">Note</p>
+    <p class="flex-1"></p>
+  </div>
+
+  <%= render @payments %>
 </div>
