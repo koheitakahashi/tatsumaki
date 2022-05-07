@@ -161,6 +161,9 @@ GEM
       railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
+    turbo-rails (1.0.1)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     websocket-driver (0.7.5)
@@ -180,6 +183,7 @@ DEPENDENCIES
   rails (~> 7.0.2, >= 7.0.2.3)
   sprockets-rails
   tailwindcss-rails (~> 2.0)
+  turbo-rails
   tzinfo-data
 
 RUBY VERSION
