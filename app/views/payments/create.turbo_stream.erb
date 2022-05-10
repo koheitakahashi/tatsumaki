@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend "payments", @payment %>
+
+<%= turbo_stream.update Payment.new, "" %>
+
+<%= turbo_stream.update "flash", partial: "flash" %>
