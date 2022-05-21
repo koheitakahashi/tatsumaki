@@ -1,24 +1,24 @@
 <%= turbo_frame_tag payment do %>
-  <div class="flex flex-row">
-    <p class="flex-1 mb-2">
+  <div class="grid grid-cols-6 justify-items-center border-b items-center">
+    <div>
       <%= payment.paid_at.strftime("%Y/%m/%d") %>
-    </p>
+    </div>
 
-    <p class="flex-1 mb-2">
+    <div>
       <%= payment.amount %>
-    </p>
+    </div>
 
-    <p class="flex-1 mb-2">
+    <div>
       <%= payment.kind %>
-    </p>
+    </div>
 
-    <p class="flex-1 mb-2">
+    <div>
       <%= payment.name %>
-    </p>
+    </div>
 
-    <p class="flex-1 mb-2">
+    <div>
       <%= payment.note %>
-    </p>
+    </div>
 
     <div class="flex-1">
       <div class="flex flex-row">

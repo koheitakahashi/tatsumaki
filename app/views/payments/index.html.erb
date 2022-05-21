@@ -1,23 +1,23 @@
-<div class="flex justify-between items-center">
-  <h1 class="mb-4 text-3xl font-black">Payments</h1>
-  <%= link_to "New payment",
-              new_payment_path,
-              class: "bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black",
-              data: { turbo_frame: "new_payment" }
-  %>
-</div>
+<div class="flex w-11/12 flex-col justify-center m-auto">
+  <div class="grid grid-cols-6 mb-5">
+    <h1 class="mb-4 text-3xl font-black col-start-1 col-end-3"><%= t("activerecord.models.payment") %></h1>
+    <%= link_to t("helpers.submit.create"),
+                new_payment_path,
+                class: "bg-indigo-500 text-white px-4 py-3 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black col-end-9 col-span-2",
+                data: { turbo_frame: "new_payment" }
+    %>
+  </div>
 
+  <div class="grid grid-cols-6 justify-items-center border-b">
+    <div class="text-xl"><%= Payment.human_attribute_name(:paid_at) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:amount) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:kind) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:name) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:note) %></div>
+  </div>
 
-<div class="flex flex-row">
-  <p class="flex-1">Paid at</p>
-  <p class="flex-1">Amount</p>
-  <p class="flex-1">Kind</p>
-  <p class="flex-1">Name</p>
-  <p class="flex-1">Note</p>
-  <p class="flex-1"></p>
-</div>
-
-<%= turbo_frame_tag "new_payment" %>
-<div id="payments">
-  <%= render @payments %>
+  <%= turbo_frame_tag "new_payment" %>
+  <div id="payments">
+    <%= render @payments %>
+  </div>
 </div>
