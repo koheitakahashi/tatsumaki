@@ -1,37 +1,39 @@
 <%= turbo_frame_tag payment do %>
   <%= form_with(model: payment) do |form| %>
-    <div class="flex flex-row">
-      <div class="flex-1">
-        <%= form.date_field :paid_at %>
+    <div class="grid grid-cols-6 justify-items-center border-b items-center">
+      <div>
+        <%= form.date_field :paid_at, class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
         <%= attribute_errors(payment, :paid_at)%>
       </div>
 
-      <div class="flex-1">
-        <%= form.number_field :amount %>
+      <div>
+        <%= form.number_field :amount, class: "shadow appearance-none border rounded py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
         <%= attribute_errors(payment, :amount)%>
       </div>
 
-      <div class="flex-1">
-        <%= form.collection_select :kind, Payment.kinds, :first, :first %>
+      <div>
+        <%= form.collection_select :kind, Payment.kinds, :first, :first, {}, { class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" } %>
         <%= attribute_errors(payment, :kind)%>
       </div>
 
-      <div class="flex-1">
-        <%= form.text_field :name %>
+      <div>
+        <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
         <%= attribute_errors(payment, :name)%>
       </div>
 
-      <div class="flex-1">
-        <%= form.text_area :note %>
+      <div>
+        <%= form.text_area :note, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
         <%= attribute_errors(payment, :note)%>
       </div>
 
-      <div class="flex-1">
-        <%= form.submit %>
-      </div>
+      <div class="flex justify-items-center items-center">
+        <div class="bg-indigo-500 text-white px-2 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black">
+          <%= form.submit %>
+        </div>
 
-      <div class="flex-1">
-        <%= link_to "キャンセル", payment, class: "bg-red-500 text-white px-2 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+        <div>
+          <%= link_to "キャンセル", payments_path, class: "bg-red-500 text-white px-2 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+        </div>
       </div>
     </div>
   <% end %>
