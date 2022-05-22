@@ -17,7 +17,8 @@
   </div>
 
   <%= turbo_frame_tag "new_payment" %>
-  <div id="payments">
+  <%= turbo_frame_tag "payments" do %>
     <%= render @payments %>
+  <% end %>
   </div>
 </div>
