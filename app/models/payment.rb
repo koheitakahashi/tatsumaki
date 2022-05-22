@@ -3,7 +3,6 @@ class Payment < ApplicationRecord
   validates :paid_at, presence: true
   validates :kind, presence: true
   validates :name, presence: true
-  validates :note, presence: true
 
   enum :kind, %i[half individual]
 end

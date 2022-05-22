@@ -1,57 +1,44 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: %i[ show edit update destroy ]
-
-  # GET /payments
   def index
     @payments = Payment.all
   end
 
-  # GET /payments/1
-  def show
-  end
-
-  # GET /payments/new
   def new
     @payment = Payment.new
   end
 
-  # GET /payments/1/edit
   def edit
+    @payment = Payment.find(params[:id])
   end
 
-  # POST /payments
   def create
     @payment = Payment.new(payment_params)
 
     if @payment.save
-      redirect_to @payment, notice: "Payment was successfully created."
+      flash.now.notice = "支払を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /payments/1
   def update
+    @payment = Payment.find(params[:id])
+
     if @payment.update(payment_params)
-      redirect_to @payment, notice: "Payment was successfully updated."
+      flash.now.notice = "支払を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /payments/1
   def destroy
-    @payment.destroy
-    redirect_to payments_url, notice: "Payment was successfully destroyed."
+    @payment = Payment.find(params[:id])
+
+    @payment.destroy!
+    flash.now.notice = "支払を削除しました"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
     def payment_params
       params.require(:payment).permit(:amount, :paid_at, :kind, :name, :note)
     end

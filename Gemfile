@@ -27,3 +27,11 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "jsbundling-rails", "~> 1.0"
+
+gem "tailwindcss-rails", "~> 2.0"
+
+gem "turbo-rails"
+
+gem "redis"
