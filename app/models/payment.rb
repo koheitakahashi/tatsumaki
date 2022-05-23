@@ -5,4 +5,6 @@ class Payment < ApplicationRecord
   validates :name, presence: true
 
   enum :kind, %i[half individual]
+
+  broadcasts_to -> (payment) { "payments" }
 end
