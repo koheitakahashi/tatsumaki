@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   def index
-    @payments = Payment.all
+    @payments = Payment.all.order(:paid_at)
   end
 
   def new
