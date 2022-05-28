@@ -40,6 +40,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
 
     @payment.destroy!
+    @payment.broadcast_replace_to "total_amount", target: "total_amount", partial: "payments/total_amount", locals: { total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) }
     flash.now.notice = "支払を削除しました"
   end
 
