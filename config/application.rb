@@ -38,5 +38,13 @@ module Tatsumaki
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
+
+    # scaffold 時の生成ファイルを変更
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :erb
+      g.test_framework  :rspec
+      g.helper          false
+    end
   end
 end
