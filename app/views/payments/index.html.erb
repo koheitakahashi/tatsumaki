@@ -1,3 +1,8 @@
+<%= turbo_stream_from "payments" %>
+<%= turbo_stream_from "total_amount" %>
+
+<%= render "total_amount", total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month)  %>
+
 <div class="flex w-11/12 flex-col justify-center m-auto">
   <div class="grid grid-cols-6 mb-5">
     <h1 class="mb-4 text-3xl font-black col-start-1 col-end-3"><%= t("activerecord.models.payment") %></h1>
