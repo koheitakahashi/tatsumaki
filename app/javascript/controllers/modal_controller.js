@@ -6,20 +6,19 @@ export default class extends Controller {
 
   connect() {
     this.toggleClass = this.data.get('class') || 'hidden'
-  }
-
-  disconnect() {
-    this.close()
-  }
-
-  open(e) {
-    e.preventDefault()
     this.containerTarget.classList.remove(this.toggleClass)
     this.lockScroll()
   }
 
-  close(e) {
-    e.preventDefault()
+  successClose(event) {
+    if(event.detail.success) {
+      this.close(event)
+    }
+  }
+
+  close(event) {
+    event.preventDefault()
+
     this.containerTarget.classList.add(this.toggleClass)
     this.unLockScroll()
   }
