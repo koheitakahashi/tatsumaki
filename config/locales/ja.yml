@@ -93,3 +93,9 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  payment:
+    flash:
+      notice:
+        create: "支払を登録しました"
+        update: "支払を更新しました"
+        destroy: "支払を削除しました"
