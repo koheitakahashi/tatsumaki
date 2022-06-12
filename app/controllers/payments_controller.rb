@@ -17,8 +17,8 @@ class PaymentsController < ApplicationController
     if @payment.save
       # TODO: 長いのでメソッドに切り分けるなりしたい
       @payment.broadcast_replace_to "total_amount", target: "total_amount", partial: "payments/total_amount", locals: { total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) }
-
-      flash.now.notice = "支払を作成しました"
+      # TODO: 翻訳を使う
+      flash.now.notice = "支払いを作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +30,7 @@ class PaymentsController < ApplicationController
     if @payment.update(payment_params)
       # TODO: 長いのでメソッドに切り分けるなりしたい
       @payment.broadcast_replace_to "total_amount", target: "total_amount", partial: "payments/total_amount", locals: { total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) }
+      # TODO: 翻訳を使う
       flash.now.notice = "支払を更新しました"
     else
       render :edit, status: :unprocessable_entity

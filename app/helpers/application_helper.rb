@@ -4,4 +4,8 @@ module ApplicationHelper
       "#{model.class.human_attribute_name(attribute.to_sym)}#{message}"
     end.join
   end
+
+  def turbo_stream_flash
+    turbo_stream.append "flashes", partial: "flash"
+  end
 end
