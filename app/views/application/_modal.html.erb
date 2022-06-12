@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "modal" do %>
+  <div
+    data-controller="modal"
+    data-modal-target="container"
+    class="bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex justify-center"
+    style="z-index: 9999;"
+    >
+      <div class="w-5/12">
+        <div class="bg-white shadow-xl mt-20">
+          <div class="p-8">
+            <h2 class="text-xl mb-4"><%= title %></h2>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

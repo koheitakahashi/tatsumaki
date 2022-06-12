@@ -1,29 +1,34 @@
 <%= turbo_frame_tag payment do %>
-  <%= form_with(model: payment) do |form| %>
-    <div class="grid grid-cols-6 justify-items-center border-b items-center">
+  <%= form_with(model: payment, data: { action: "turbo:submit-end->modal#successClose" }) do |form| %>
+    <div class="grid grid-rows-6 border-b">
       <div>
+        <label><%= Payment.human_attribute_name(:paid_at) %></label>
         <%= form.date_field :paid_at, class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
-        <%= attribute_errors(payment, :paid_at)%>
+        <p class="text-red-600"><%= attribute_errors(payment, :paid_at)%>
       </div>
 
       <div>
-        <%= form.number_field :amount, class: "shadow appearance-none border rounded py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-        <%= attribute_errors(payment, :amount)%>
+        <label><%= Payment.human_attribute_name(:amount) %></label>
+        <%= form.number_field :amount, class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        <p class="text-red-600"><%= attribute_errors(payment, :amount)%>
       </div>
 
       <div>
+        <label><%= Payment.human_attribute_name(:kind) %></label>
         <%= form.collection_select :kind, Payment.kinds, :first, :first, {}, { class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" } %>
-        <%= attribute_errors(payment, :kind)%>
+        <p class="text-red-600"><%= attribute_errors(payment, :kind)%>
       </div>
 
       <div>
+        <label><%= Payment.human_attribute_name(:name) %></label>
         <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-        <%= attribute_errors(payment, :name)%>
+        <p class="text-red-600"><%= attribute_errors(payment, :name)%>
       </div>
 
       <div>
+        <label><%= Payment.human_attribute_name(:note) %></label>
         <%= form.text_area :note, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
-        <%= attribute_errors(payment, :note)%>
+        <p class="text-red-600"><%= attribute_errors(payment, :note)%>
       </div>
 
       <div class="flex justify-items-center items-center">
@@ -32,7 +37,7 @@
         </div>
 
         <div>
-          <%= link_to "キャンセル", payments_path, class: "bg-red-500 text-white px-2 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+          <%= link_to "キャンセル", payments_path, class: "bg-red-500 text-white px-2 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black", data: { action: "click->modal#close" } %>
         </div>
       </div>
     </div>

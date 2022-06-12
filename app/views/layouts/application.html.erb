@@ -3,6 +3,7 @@
   <head>
     <title>Tatsumaki</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -14,10 +15,9 @@
   <body>
     <%= render "layouts/header" =%>
     <main class="container mx-auto mt-10 px-5 flex-row">
-      <div id="flash">
-        <%= render "flash" %>
-      </div>
       <%= yield %>
     </main>
+    <div id="flashes" class="fixed top-16 right-0"></div>
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>

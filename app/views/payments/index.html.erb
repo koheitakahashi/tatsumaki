@@ -9,7 +9,7 @@
     <%= link_to t("helpers.submit.create"),
                 new_payment_path,
                 class: "bg-indigo-500 text-white px-4 py-3 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black col-end-9 col-span-2",
-                data: { turbo_frame: "new_payment" }
+                data: { turbo_frame: "modal" }
     %>
   </div>
 
@@ -21,9 +21,7 @@
     <div class="text-xl"><%= Payment.human_attribute_name(:note) %></div>
   </div>
 
-  <%= turbo_frame_tag "new_payment" %>
   <%= turbo_frame_tag "payments" do %>
     <%= render @payments %>
   <% end %>
-  </div>
 </div>

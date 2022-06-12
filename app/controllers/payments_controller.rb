@@ -1,13 +1,13 @@
 class PaymentsController < ApplicationController
   def index
-    @payments = Payment.all.order(:paid_at)
+    @payments = Payment.where(paid_at: Time.current.beginning_of_month..Time.current.end_of_month).order(:paid_at, :created_at)
   end
 
   def new
     @payment = Payment.new
   end
 
-  def edit
+  def show
     @payment = Payment.find(params[:id])
   end
 
@@ -15,22 +15,25 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
     if @payment.save
-      # TODO: 長いのでメソッドに切り分けるなりしたい
-      @payment.broadcast_replace_to "total_amount", target: "total_amount", partial: "payments/total_amount", locals: { total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) }
-
-      flash.now.notice = "支払を作成しました"
+      @payment.broadcast_prepend_to("payments")
+      broadcast_replace_to_total_amount(payment: @payment)
+      flash.now.notice = t("payment.flash.notice.create")
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @payment = Payment.find(params[:id])
   end
 
   def update
     @payment = Payment.find(params[:id])
 
     if @payment.update(payment_params)
-      # TODO: 長いのでメソッドに切り分けるなりしたい
-      @payment.broadcast_replace_to "total_amount", target: "total_amount", partial: "payments/total_amount", locals: { total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) }
-      flash.now.notice = "支払を更新しました"
+      @payment.broadcast_replace_to "payments"
+      broadcast_replace_to_total_amount(payment: @payment)
+      flash.now.notice = t("payment.flash.notice.update")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,12 +43,24 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
 
     @payment.destroy!
-    @payment.broadcast_replace_to "total_amount", target: "total_amount", partial: "payments/total_amount", locals: { total_amount: Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) }
-    flash.now.notice = "支払を削除しました"
+    @payment.broadcast_remove_to("payments")
+    broadcast_replace_to_total_amount(payment: @payment)
+    flash.now.notice = t("payment.flash.notice.destroy")
   end
 
   private
     def payment_params
       params.require(:payment).permit(:amount, :paid_at, :kind, :name, :note)
+    end
+
+    def broadcast_replace_to_total_amount(payment:, total_amount: nil)
+      total_amount = Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) unless total_amount
+
+      payment.broadcast_replace_to(
+        "total_amount",
+        target: "total_amount",
+        partial: "payments/total_amount",
+        locals: { total_amount: total_amount }
+      )
     end
 end

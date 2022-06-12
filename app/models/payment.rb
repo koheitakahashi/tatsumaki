@@ -6,8 +6,6 @@ class Payment < ApplicationRecord
 
   enum :kind, %i[half individual]
 
-  broadcasts_to -> (payment) { "payments" }
-
   def self.total_amount(term)
     raise ArgumentError, "" unless term.is_a?(Range)
 
