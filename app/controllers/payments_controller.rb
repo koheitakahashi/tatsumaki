@@ -31,7 +31,6 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
 
     if @payment.update(payment_params)
-      # TODO: 更新後に更新内容が反映されないが原因不明(ブラウザを2つ開くと、更新操作をしていない方のブラウザは更新内容が反映される)
       @payment.broadcast_replace_to "payments"
       broadcast_replace_to_total_amount(payment: @payment)
       flash.now.notice = t("payment.flash.notice.update")

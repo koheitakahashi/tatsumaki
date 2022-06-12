@@ -1,1 +1,3 @@
-<%= render "modal", payment: @payment, title: "編集" %>
+<%= render "modal", payment: @payment, title: "編集" do %>
+  <%= render "form", payment: @payment %>
+<% end %>
