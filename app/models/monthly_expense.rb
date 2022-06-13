@@ -21,4 +21,14 @@ class MonthlyExpense
     current_month_payments = Payment.where(paid_at: current_time.beginning_of_month..current_time.end_of_month).order(:paid_at, :created_at)
     @payments = (current_month_payments.presence || [])
   end
+
+  def next_year_and_month_hash
+    next_datetime = current_time + 1.month
+    { year: next_datetime.year, month: next_datetime.month }
+  end
+
+  def previous_year_and_month_hash
+    previous_datetime = current_time - 1.month
+    { year: previous_datetime.year, month: previous_datetime.month }
+  end
 end

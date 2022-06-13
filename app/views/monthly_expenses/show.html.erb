@@ -1,7 +1,13 @@
 <%= turbo_stream_from "payments" %>
 <%= turbo_stream_from "total_amount" %>
 
-<%= render "total_amount", total_amount: @monthly_expenses.total_amount %>
+<div>
+  <%= link_to("前の月", monthly_expenses_path(@monthly_expense.previous_year_and_month_hash)) %>
+  <h2 class="text-center text-4xl font-bold"><%= @monthly_expense.current_time.strftime("%Y/%m") %> の支出一覧</h2>
+  <%= link_to("次の月", monthly_expenses_path(@monthly_expense.next_year_and_month_hash)) %>
+</div>
+
+<%= render "total_amount", total_amount: @monthly_expense.total_amount %>
 
 <div class="flex w-11/12 flex-col justify-center m-auto">
   <div class="grid grid-cols-6 mb-5">
@@ -22,6 +28,6 @@
   </div>
 
   <%= turbo_frame_tag "payments" do %>
-    <%= render @monthly_expenses.payments %>
+    <%= render @monthly_expense.payments %>
   <% end %>
 </div>
