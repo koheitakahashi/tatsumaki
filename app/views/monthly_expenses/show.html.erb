@@ -1,10 +1,15 @@
 <%= turbo_stream_from "payments" %>
 <%= turbo_stream_from "total_amount" %>
 
-<div>
-  <%= link_to("前の月", monthly_expenses_path(@monthly_expense.previous_year_and_month_hash)) %>
-  <h2 class="text-center text-4xl font-bold"><%= @monthly_expense.current_time.strftime("%Y/%m") %> の支出一覧</h2>
-  <%= link_to("次の月", monthly_expenses_path(@monthly_expense.next_year_and_month_hash)) %>
+<div class="flex items-center justify-center">
+  <div class="basis-1/4 fond-bold text-xl text-center">
+    <%= link_to("前の月", monthly_expenses_path(@monthly_expense.previous_year_and_month_hash),
+      { class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" }) %>
+  </div>
+  <h2 class="text-center text-4xl font-bold basis-2/4"><%= @monthly_expense.current_time.strftime("%Y/%m") %> の支出一覧</h2>
+  <div class="basis-1/4 fond-bold text-xl text-center">
+    <%= link_to("次の月", monthly_expenses_path(@monthly_expense.next_year_and_month_hash), { class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" }) %>
+  </div>
 </div>
 
 <%= render "total_amount", total_amount: @monthly_expense.total_amount %>
@@ -14,7 +19,8 @@
     <h1 class="mb-4 text-3xl font-black col-start-1 col-end-3"><%= t("activerecord.models.payment") %></h1>
     <%= link_to t("helpers.submit.create"),
                 new_payment_path,
-                class: "bg-indigo-500 text-white px-4 py-3 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black col-end-9 col-span-2",
+                class: "bg-indigo-500 text-white px-4 py-3 border rounded-md hover:bg-white hover:border-indigo-500
+                  hover:text-black col-end-9 col-span-2",
                 data: { turbo_frame: "modal" }
     %>
   </div>
