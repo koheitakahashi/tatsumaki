@@ -1,8 +1,4 @@
 class PaymentsController < ApplicationController
-  def index
-    @payments = Payment.where(paid_at: Time.current.beginning_of_month..Time.current.end_of_month).order(:paid_at, :created_at)
-  end
-
   def new
     @payment = Payment.new
   end
