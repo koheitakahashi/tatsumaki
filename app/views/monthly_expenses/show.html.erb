@@ -1,0 +1,27 @@
+<%= turbo_stream_from "payments" %>
+<%= turbo_stream_from "total_amount" %>
+
+<%= render "total_amount", total_amount: @monthly_expenses.total_amount %>
+
+<div class="flex w-11/12 flex-col justify-center m-auto">
+  <div class="grid grid-cols-6 mb-5">
+    <h1 class="mb-4 text-3xl font-black col-start-1 col-end-3"><%= t("activerecord.models.payment") %></h1>
+    <%= link_to t("helpers.submit.create"),
+                new_payment_path,
+                class: "bg-indigo-500 text-white px-4 py-3 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black col-end-9 col-span-2",
+                data: { turbo_frame: "modal" }
+    %>
+  </div>
+
+  <div class="grid grid-cols-6 justify-items-center border-b">
+    <div class="text-xl"><%= Payment.human_attribute_name(:paid_at) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:amount) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:kind) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:name) %></div>
+    <div class="text-xl"><%= Payment.human_attribute_name(:note) %></div>
+  </div>
+
+  <%= turbo_frame_tag "payments" do %>
+    <%= render @monthly_expenses.payments %>
+  <% end %>
+</div>

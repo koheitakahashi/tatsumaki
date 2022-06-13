@@ -5,10 +5,4 @@ class Payment < ApplicationRecord
   validates :name, presence: true
 
   enum :kind, %i[half individual]
-
-  def self.total_amount(term)
-    raise ArgumentError, "" unless term.is_a?(Range)
-
-    Payment.where(paid_at: term).sum(:amount)
-  end
 end

@@ -53,13 +53,14 @@ class PaymentsController < ApplicationController
       params.require(:payment).permit(:amount, :paid_at, :kind, :name, :note)
     end
 
-    def broadcast_replace_to_total_amount(payment:, total_amount: nil)
-      total_amount = Payment.total_amount(Time.current.beginning_of_month..Time.current.end_of_month) unless total_amount
+    def broadcast_replace_to_total_amount(payment:)
+      monthly_expense = MonthlyExpense.new(year: params[:year], month: params[:month])
+      total_amount = monthly_expense.total_amount
 
       payment.broadcast_replace_to(
         "total_amount",
         target: "total_amount",
-        partial: "payments/total_amount",
+        partial: "monthly_expenses/total_amount",
         locals: { total_amount: total_amount }
       )
     end

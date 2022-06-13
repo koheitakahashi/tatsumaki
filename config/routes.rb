@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  root "payments#index"
-  resources :payments, only: %w[index new show create edit update destroy]
+  root "monthly_expenses#show"
+  resources :payments, only: %i[new create edit update destroy]
+  get "monthly_expenses/:year/:month", to: "monthly_expenses#show"
 end
