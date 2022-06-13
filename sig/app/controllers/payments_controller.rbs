@@ -1,0 +1,21 @@
+class PaymentsController < ApplicationController
+  def index: () -> untyped
+
+  def new: () -> untyped
+
+  def show: () -> untyped
+
+  def create: () -> untyped
+
+  def edit: () -> untyped
+
+  def update: () -> untyped
+
+  def destroy: () -> untyped
+
+  private
+
+  def payment_params: () -> untyped
+
+  def broadcast_replace_to_total_amount: (payment: untyped, ?total_amount: untyped?) -> untyped
+end

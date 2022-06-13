@@ -1,0 +1,3 @@
+class Payment < ApplicationRecord
+  def self.total_amount: (untyped term) -> untyped
+end

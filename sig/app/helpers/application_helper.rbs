@@ -1,0 +1,5 @@
+module ApplicationHelper
+  def attribute_errors: (untyped model, untyped attribute) -> untyped
+
+  def turbo_stream_flash: () -> untyped
+end
