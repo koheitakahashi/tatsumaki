@@ -1,0 +1,24 @@
+interface _RbsRailsPathHelpers
+  def rails_info_properties_path: (*untyped) -> String
+  def rails_info_routes_path: (*untyped) -> String
+  def rails_info_path: (*untyped) -> String
+  def root_path: (*untyped) -> String
+  def payments_path: (*untyped) -> String
+  def new_payment_path: (*untyped) -> String
+  def edit_payment_path: (*untyped) -> String
+  def payment_path: (*untyped) -> String
+  def turbo_recede_historical_location_path: (*untyped) -> String
+  def turbo_resume_historical_location_path: (*untyped) -> String
+  def turbo_refresh_historical_location_path: (*untyped) -> String
+  def rails_info_properties_url: (*untyped) -> String
+  def rails_info_routes_url: (*untyped) -> String
+  def rails_info_url: (*untyped) -> String
+  def root_url: (*untyped) -> String
+  def payments_url: (*untyped) -> String
+  def new_payment_url: (*untyped) -> String
+  def edit_payment_url: (*untyped) -> String
+  def payment_url: (*untyped) -> String
+  def turbo_recede_historical_location_url: (*untyped) -> String
+  def turbo_resume_historical_location_url: (*untyped) -> String
+  def turbo_refresh_historical_location_url: (*untyped) -> String
+end
