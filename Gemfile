@@ -20,6 +20,11 @@ gem 'stimulus-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  # not default
+  gem 'steep', require: false
+  gem 'rbs', require: false
+  gem 'rbs_rails', require: false
+
 end
 
 group :test do
