@@ -1,7 +1,7 @@
 <%= turbo_frame_tag payment do %>
   <div class="grid grid-cols-6 justify-items-center border-b items-center">
     <div>
-      <%= payment.paid_at.strftime("%Y/%m/%d") %>
+      <%= payment.paid_at.strftime("%m/%d") %>
     </div>
 
     <div>
@@ -9,7 +9,7 @@
     </div>
 
     <div>
-      <%= payment.kind %>
+      <%= t("activerecord.enums.payment.kind.#{payment.kind}") %>
     </div>
 
     <div>

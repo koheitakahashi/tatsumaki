@@ -6,7 +6,7 @@
     <%= link_to("前の月", monthly_expenses_path(@monthly_expense.previous_year_and_month_hash),
       { class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" }) %>
   </div>
-  <h2 class="text-center text-4xl font-bold basis-2/4"><%= @monthly_expense.current_time.strftime("%Y/%m") %> の支出一覧</h2>
+  <h1 class="text-center text-4xl font-bold basis-2/4"><%= @monthly_expense.current_time.strftime("%Y/%m") %> の支出一覧</h1>
   <div class="basis-1/4 fond-bold text-xl text-center">
     <%= link_to("次の月", monthly_expenses_path(@monthly_expense.next_year_and_month_hash), { class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" }) %>
   </div>
@@ -16,7 +16,6 @@
 
 <div class="flex w-11/12 flex-col justify-center m-auto">
   <div class="grid grid-cols-6 mb-5">
-    <h1 class="mb-4 text-3xl font-black col-start-1 col-end-3"><%= t("activerecord.models.payment") %></h1>
     <%= link_to t("helpers.submit.create"),
                 new_payment_path,
                 class: "bg-indigo-500 text-white px-4 py-3 border rounded-md hover:bg-white hover:border-indigo-500
