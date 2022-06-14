@@ -1,4 +1,6 @@
 class ConfirmationsController < ApplicationController
+  before_action :redirect_if_authenticated, only: [:create, :new]
+
   def new
     @user = User.new
   end
@@ -20,6 +22,7 @@ class ConfirmationsController < ApplicationController
 
     if @user.present?
       @user.confirm!
+      login @user
       redirect_to root_path, notice: "あなたのアカウントは確認済みです" # TODO: 辞書ファイルにする
     else
       redirect_to new_confirmation_path, alert: "トークンに誤りがあります"
