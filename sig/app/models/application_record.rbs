@@ -1,0 +1,3 @@
+class ApplicationRecord < ActiveRecord::Base
+  def self.enum: (Symbol, Array[Symbol]) -> void
+end
