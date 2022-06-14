@@ -13,6 +13,8 @@ RSpec.describe MonthlyExpense, type: :model do
   end
 
   describe "#payments" do
+    Factory.create(:payment, amount: 1000, paid_at: Time.current)
+    Factory.create_list(:payment, 10)
   end
 
   describe "#next_year_and_month_hash" do
