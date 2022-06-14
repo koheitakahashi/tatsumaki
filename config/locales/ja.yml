@@ -9,6 +9,11 @@ ja:
         kind: 種別
         name: 名前
         note: メモ
+    enums:
+      payment:
+        kind:
+          half: 折半
+          individual: 個別
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

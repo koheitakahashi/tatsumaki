@@ -6,9 +6,12 @@ class Payment < ApplicationRecord
 
   enum :kind, %i[half individual]
 
-  def self.total_amount(term)
-    raise ArgumentError, "" unless term.is_a?(Range)
+  def self.kinds_18n
+    kinds_hash = {}
+    kinds.keys.each do |key|
+      kinds_hash[I18n.t("activerecord.enums.payment.kind.#{key}")] = key
+    end
 
-    Payment.where(paid_at: term).sum(:amount)
+    kinds_hash
   end
 end
