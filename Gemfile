@@ -20,6 +20,10 @@ gem 'stimulus-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  # not default
+  gem 'rubocop', require:false
+  gem 'rubocop-rails', require:false
+  gem 'rubocop-performance', require:false
 end
 
 group :test do
