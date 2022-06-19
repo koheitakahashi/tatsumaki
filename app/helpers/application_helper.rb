@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helpers for Tatsumaki App wid.
 module ApplicationHelper
   def attribute_errors(model, attribute)
     model.errors.messages[attribute.to_sym].map do |message|
@@ -6,6 +9,6 @@ module ApplicationHelper
   end
 
   def turbo_stream_flash
-    turbo_stream.append "flashes", partial: "flash"
+    turbo_stream.append 'flashes', partial: 'flash'
   end
 end

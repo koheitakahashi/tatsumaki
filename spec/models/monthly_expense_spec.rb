@@ -1,23 +1,24 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # TODO: テストを追加する
 RSpec.describe MonthlyExpense, type: :model do
-  subject(:monthly_expense) { MonthlyExpense.new(year: 2022, month: 06) }
+  subject(:monthly_expense) { MonthlyExpense.new(year: 2022, month: 0o6) }
 
-  describe "#current_time" do
-    it { expect(monthly_expense.current_time.strftime("%Y%m")).to eq "202206" }
+  describe '#current_time' do
+    it { expect(monthly_expense.current_time.strftime('%Y%m')).to eq '202206' }
   end
 
-  describe "#total_amount" do
-
+  describe '#total_amount' do
   end
 
-  describe "#payments" do
+  describe '#payments' do
   end
 
-  describe "#next_year_and_month_hash" do
+  describe '#next_year_and_month_hash' do
   end
 
-  describe "#previous_year_and_month_hash" do
+  describe '#previous_year_and_month_hash' do
   end
 end

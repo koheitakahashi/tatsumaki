@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# A model for payment.
 class Payment < ApplicationRecord
   validates :amount, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :paid_at, presence: true
@@ -8,7 +11,7 @@ class Payment < ApplicationRecord
 
   def self.kinds_18n
     kinds_hash = {}
-    kinds.keys.each do |key|
+    kinds.each_key do |key|
       kinds_hash[I18n.t("activerecord.enums.payment.kind.#{key}")] = key
     end
 
